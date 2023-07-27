@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... Other head elements ... -->
+    <link rel="stylesheet" href="style.css">
+    <title>Ghana Text To Speech App</title>
+</head>
+<body>
+    <div class="main">
+        <div id="section-1" class="section-alignment">
+            <!-- Top content -->
+            <h2 id="landing-header">Ghana Accent Text To Speech App</h2>
+            <div class="padding-semi-large"></div>
+            <div class="padding"></div>
+            <textarea type="text" style="color:#fff;" id="textInput" rows="8" placeholder="Enter text here to speak it"></textarea>
+            <div class="padding-semi-large"></div>
+            <div id="app-store-buttons">
+                <button id="speakTextButton" class="button-standard" onclick="speakInputText()">
+                    Speak Now<img class="icon-link" src="./assets/icons/speakIcon.svg">
+                </button>
+                <p>|</p>
+                <button id="pauseButton" class="button-standard" onclick="pauseSpeech()">
+                    Pause<img class="icon-link-small" src="./assets/icons/pauseIcon.svg">
+                </button>
+                <p>|</p>
+                <button class="button-standard" onclick="stopSpeech()">
+                    Stop<img class="icon-link-small" src="./assets/icons/stopIcon.svg">
+                </button>
+                <p>|</p>
+                <button class="button-standard" onclick="downloadVoice()">
+                    Download Text
+                </button>
+            </div>
+            <div id="dropdowns">
+                <div class="optionsDiv">
+                    <!-- Only Olivia's voice is available in the dropdown -->
+                    <select name="voiceOptions" id="voiceOptions" onchange="changeVoice(this.value)">
+                        <option value="voice6">Ghana Accent</option>
+                    </select>
+                </div>
+            </div>
+            <div id="volumeControl">
+                <label for="volumeInput">Volume:</label>
+                <input type="range" id="volumeInput" min="0" max="1" step="0.1" value="1" oninput="updateVolumeLabel()">
+                <label for="volumeInput" id="volumeLabel">1</label>
+            </div>
+        </div>
+    </div>
+    <script src="get_custom_voice_id.js"></script>
+    <script src="volume.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
