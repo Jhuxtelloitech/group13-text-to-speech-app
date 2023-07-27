@@ -1,4 +1,4 @@
-﻿// Initialize the speech synthesis
+// Initialize the speech synthesis
 var speech = new SpeechSynthesisUtterance();
 speech.rate = 0.75; // Set the speech rate to 0.75x for slower speed
 speech.pitch = 1;
