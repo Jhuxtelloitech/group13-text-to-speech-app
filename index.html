@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- ... Other head elements ... -->
     <link rel="stylesheet" href="style.css">
     <title>Ghana Text To Speech App</title>
 </head>
+
 <body>
     <div class="main">
         <div id="section-1" class="section-alignment">
@@ -12,10 +14,11 @@
             <h2 id="landing-header">Ghana Accent Text To Speech App</h2>
             <div class="padding-semi-large"></div>
             <div class="padding"></div>
-            <textarea type="text" style="color:#fff;" id="textInput" rows="8" placeholder="Enter text here to speak it"></textarea>
+            <textarea type="text" style="color:#fff;" id="textInput" rows="8"
+                      placeholder="Enter text here to speak it"></textarea>
             <div class="padding-semi-large"></div>
             <div id="app-store-buttons">
-                <button id="speakTextButton" class="button-standard" onclick="speakInputText()">
+                <button id="speakTextButton" class="button-standard" onclick="promptVoiceSelection()">
                     Speak Now<img class="icon-link" src="speakIcon.svg">
                 </button>
                 <p>|</p>
@@ -33,9 +36,14 @@
             </div>
             <div id="dropdowns">
                 <div class="optionsDiv">
-                    <!-- Only Olivia's voice is available in the dropdown -->
-                    <select name="voiceOptions" id="voiceOptions" onchange="changeVoice(this.value)">
-                        <option value="voice6">Ghana Accent</option>
+                    <!-- Voice options dropdown -->
+                    <select name="voiceOptions" id="voiceOptions">
+                        <option value="default">Select a voice</option>
+                        <option value="0">Daniel's voice</option>
+                        <option value="1">Samantha's voice</option>
+                        <option value="2">Alex's voice</option>
+                        <option value="3">Olivia's voice</option>
+                        <option value="4">Victoria's voice</option>
                     </select>
                 </div>
             </div>
@@ -50,4 +58,5 @@
     <script src="volume.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
