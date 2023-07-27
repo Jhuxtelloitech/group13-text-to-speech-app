@@ -1,19 +1,32 @@
+// This is so that if speech is still playing from previous session, it stops on page load
+speechSynthesis.cancel();
+
 // Initialize the speech synthesis
 var speech = new SpeechSynthesisUtterance();
-speech.rate = 0.75; // Set the speech rate to 0.75x for slower speed
+speech.rate = 0.5; // Set default speed to 0.5x for all voices
 speech.pitch = 1;
 speech.volume = 1;
 
-// Set Olivia's voice as the default voice
-speech.voice = speechSynthesis.getVoices().find(v => v.name === 'en-GB-Wavenet-D');
+// Load voices and set the first available voice as default
+let voicesLoaded = false;
+speechSynthesis.onvoiceschanged = function () {
+    if (!voicesLoaded) {
+        const voices = speechSynthesis.getVoices();
+        speech.voice = voices[0];
+        voicesLoaded = true;
+    }
+};
 
-// Function to fetch the custom voice ID
-async function getCustomVoiceId() {
-    // ... (Your existing code)
+// Function to prompt the user to select a voice before speaking
+function promptVoiceSelection() {
+    const selectedVoiceIndex = document.getElementById("voiceOptions").value;
+    if (selectedVoiceIndex === "default") {
+        alert("Please select a voice from the dropdown before speaking.");
+    } else {
+        changeVoice(selectedVoiceIndex); // Change the voice based on the selected option
+        speakInputText();
+    }
 }
-
-// Call the function to fetch the custom voice ID
-getCustomVoiceId();
 
 // Function to handle speaking the input text
 function speakInputText() {
@@ -66,4 +79,12 @@ function updateVolumeLabel() {
 
     // Update the speech volume
     speech.volume = volumeInput.value;
+}
+
+// Function to change the speech voice based on the selected option in the voice dropdown
+function changeVoice(voiceIndex) {
+    const voices = speechSynthesis.getVoices();
+    if (voiceIndex >= 0 && voiceIndex < voices.length) {
+        speech.voice = voices[voiceIndex];
+    }
 }
