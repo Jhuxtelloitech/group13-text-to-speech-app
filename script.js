@@ -3,7 +3,7 @@ speechSynthesis.cancel();
 
 // Initialize the speech synthesis
 var speech = new SpeechSynthesisUtterance();
-speech.rate = 0.5; // Set default speed to 0.5x for all voices
+speech.rate = 0.75; // Set default speed to 0.5x for all voices
 speech.pitch = 1;
 speech.volume = 1;
 
